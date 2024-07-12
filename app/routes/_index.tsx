@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/node";
+import { Button, useMantineColorScheme } from '@mantine/core'
 
 export const meta: MetaFunction = () => {
   return [
@@ -8,9 +9,14 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const { colorScheme, setColorScheme } = useMantineColorScheme()
+
   return (
     <div className="font-sans p-4">
       <h1 className="text-3xl">Welcome to Remix</h1>
+
+      <Button onClick={() => setColorScheme(colorScheme === 'light' ? 'dark' : 'light')}>Change to {colorScheme === 'light' ? 'dark' : 'light'} theme</Button>
+
       <ul className="list-disc mt-4 pl-6 space-y-2">
         <li>
           <a
