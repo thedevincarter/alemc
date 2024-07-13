@@ -75,7 +75,7 @@ export default function Header() {
         onClose={closeDrawer}
         size="100%"
         padding="md"
-        title="Navigation"
+        title="Allegiance LEMC Arkansas"
         hiddenFrom="sm"
         zIndex={1000000}
       >
