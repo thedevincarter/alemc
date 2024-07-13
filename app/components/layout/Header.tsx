@@ -80,7 +80,11 @@ export default function Header() {
         zIndex={1000000}
       >
         <Stack>
-          <Link to="/">Home</Link>
+          <Link to="/" className={classes.link}         data-active={pathname === '/' || undefined}
+        onClick={() => {
+        setActive('/');
+        closeDrawer()
+      }}>Home</Link>
 
           {items}
         </Stack>
