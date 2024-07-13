@@ -80,6 +80,8 @@ export default function Header() {
         zIndex={1000000}
       >
         <Stack>
+          <Link to="/">Home</Link>
+
           {items}
         </Stack>
       </Drawer>
