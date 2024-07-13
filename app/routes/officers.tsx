@@ -1,3 +1,9 @@
+import { Container, Text } from "@mantine/core"
+
 export default function Officers() {
-    return <div>Officers</div>
+    return (
+        <Container size="md" pt={100}>
+            <Text>Coming Soon</Text>
+        </Container>
+    )
 }

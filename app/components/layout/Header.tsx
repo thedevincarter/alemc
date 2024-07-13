@@ -1,5 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Container, Group, Burger, Image, Box, BackgroundImage } from '@mantine/core';
+import { Container, Group, Burger, Image, Box, BackgroundImage,  HoverCard,
+  Button,
+  UnstyledButton,
+  Text,
+  SimpleGrid,
+  ThemeIcon,
+  Anchor,
+  Divider,
+  Center,
+  Stack, 
+  Drawer,
+  Collapse,
+  ScrollArea,
+  rem,
+  useMantineTheme, } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
 import { MantineLogo } from '@mantinex/mantine-logo';
 import classes from './Header.module.css';
@@ -15,7 +29,7 @@ const links = [
 ];
 
 export default function Header() {
-  const [opened, { toggle }] = useDisclosure(false);
+  const [drawerOpened, { toggle: toggleDrawer, close: closeDrawer }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
 
   const pathname = useMatches()[1].pathname
@@ -30,6 +44,7 @@ export default function Header() {
         data-active={pathname === link.link || undefined}
         onClick={() => {
         setActive(link.link);
+        closeDrawer()
       }}
     >
       {link.label}
@@ -37,7 +52,8 @@ export default function Header() {
   ));
 
   return (
-    <header className={classes.header}>
+    <Box>
+      <header className={classes.header}>
       <Container size="md" className={classes.inner}>
         <Link to="/">
             <img src={logo} className={classes.logo} />
@@ -48,8 +64,26 @@ export default function Header() {
           {items}
         </Group>
 
-        <Burger opened={opened} onClick={toggle} hiddenFrom="xs" size="sm" />
+        <Burger opened={drawerOpened} onClick={toggleDrawer} hiddenFrom="xs" size="sm" />
+
+        
       </Container>
     </header>
+
+      <Drawer
+        opened={drawerOpened}
+        onClose={closeDrawer}
+        size="100%"
+        padding="md"
+        title="Navigation"
+        hiddenFrom="sm"
+        zIndex={1000000}
+      >
+        <Stack>
+          {items}
+        </Stack>
+      </Drawer>
+    </Box>
+    
   );
 }
