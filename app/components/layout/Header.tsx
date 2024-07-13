@@ -40,9 +40,7 @@ export default function Header() {
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
         <Link to="/">
-            <Image src={logo} height={50} width={50} />
-
-
+            <img src={logo} className={classes.logo} />
         </Link>
         
 
