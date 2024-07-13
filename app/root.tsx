@@ -11,7 +11,9 @@ import {
 import { ColorSchemeScript, MantineProvider } from '@mantine/core';
 import Header from './components/layout/Header'
 
-export function Layout({ children }: { children: React.ReactNode }) {
+
+
+export default function App() {
   return (
     <html lang="en">
       <head>
@@ -31,7 +33,8 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <MantineProvider>
           <Header />
 
-          {children}
+          <Outlet />
+          
           </MantineProvider>
         
         <ScrollRestoration />
@@ -40,8 +43,4 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </body>
     </html>
   );
-}
-
-export default function App() {
-  return <Outlet />;
 }
